@@ -15,7 +15,7 @@ const schema = z.object({
 });
 
 export default function Login() {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(true);
   const router = useRouter();
   const handler = useForm({ mode: "onChange", resolver: zodResolver(schema) });
 
@@ -51,8 +51,8 @@ export default function Login() {
       <View style={styles.show_hide_password}>
         <Checkbox
           style={styles.checkbox}
-          value={checked}
-          color={checked ? "red" : undefined}
+          value={!checked}
+          color={!checked ? "red" : undefined}
           onValueChange={() => setChecked(!checked)}
         />
         <Text>{checked ? "Show Password" : "Hide Password"}</Text>

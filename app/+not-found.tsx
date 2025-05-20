@@ -2,7 +2,6 @@ import { Wrapper } from "@/components/ui-wrapper/main";
 import { Link, Stack } from "expo-router";
 import { Text, View } from "react-native";
 
-
 export default function NotFoundScreen() {
   return (
     <Wrapper>

@@ -1,6 +1,6 @@
 import { Tabs } from "expo-router";
 import React from "react";
-import { IconSymbol } from "./icon/IconSymbol";
+import { IconSymbol } from "./icon/icon-symbol";
 
 export function Navigation() {
   return (
@@ -21,7 +21,7 @@ export function Navigation() {
         }}
       />
       <Tabs.Screen
-        name="about"
+        name="(tabs)/about"
         options={{
           title: "About us",
         }}

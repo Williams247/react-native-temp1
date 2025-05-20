@@ -7,7 +7,7 @@ interface Props {
 }
 
 export function Card({ children, style }: Props) {
-  return <View style={{ ...styles.card, ...style }}>{children}</View>;
+  return <View style={[styles.card, style]}>{children}</View>;
 }
 
 const styles = StyleSheet.create({

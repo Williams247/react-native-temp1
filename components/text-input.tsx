@@ -6,8 +6,10 @@ interface Props {
   title: string;
   handler: UseFormReturn<any>;
   placeholder?: string;
-  style?: Record<string, string | number>;
-  secureTextEntry?: boolean
+  autoCapitalize?: "none" | "sentences" | "words" | "characters";
+  style?: Record<string, string | number> | {} | undefined;
+  textInputStyle?: Record<string, string | number> | {} | undefined;
+  secureTextEntry?: boolean;
 }
 
 export function TextInputComponent(props: Props) {
@@ -16,26 +18,37 @@ export function TextInputComponent(props: Props) {
     setValue,
   } = props.handler;
   return (
-    <View>
-      {props?.label && <Text style={{ fontSize: 18 }}>{props.label}</Text>}
+    <View style={props.style ?? {}}>
+      {props?.label && <Text style={styles.input_label}>{props.label}</Text>}
       <TextInput
-        style={{ ...styles.input, ...props.style }}
+        style={[styles.input, props.textInputStyle ?? {}]}
         onChangeText={(text) => setValue(props.title, text)}
         placeholder={props.placeholder ?? ""}
+        autoCapitalize={props.autoCapitalize}
         secureTextEntry={props.secureTextEntry}
       />
-      {errors[props?.title] && (
-        <Text>{errors[props.title]?.message as any}</Text>
+      {errors[props.title]?.message && (
+        <Text style={styles.input_error}>
+          {String(errors[props.title]?.message ?? "")}
+        </Text>
       )}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  input_label: {
+    fontSize: 15,
+    marginBottom: 8,
+  },
   input: {
-    padding: 13,
+    padding: 15,
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 10,
+    marginBottom: 6,
+  },
+  input_error: {
+    color: "red",
   },
 });

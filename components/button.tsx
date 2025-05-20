@@ -10,7 +10,7 @@ interface Props {
 export function Button({ children, onPress, style }: Props) {
   return (
     <Pressable
-      style={{ ...styles.button, ...(styles ?? {}) }}
+      style={[styles.button, style ?? {}]}
       onPress={() => onPress && onPress()}
     >
       {children}

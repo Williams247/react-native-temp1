@@ -21,7 +21,7 @@ export function Navigation() {
         }}
       />
       <Tabs.Screen
-        name="(tabs)/about"
+        name="about"
         options={{
           title: "About us",
         }}

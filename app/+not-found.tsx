@@ -1,4 +1,4 @@
-import { Wrapper } from "@/components/ui-wrapper";
+import { Wrapper } from "@/components/ui-wrapper/main";
 import { Link, Stack } from "expo-router";
 import { Text, View } from "react-native";
 

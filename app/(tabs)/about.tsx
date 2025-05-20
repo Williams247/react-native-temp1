@@ -1,4 +1,4 @@
-import { Wrapper } from "@/components/ui-wrapper";
+import { Wrapper } from "@/components/ui-wrapper/main";
 import { ScrollView, Text } from "react-native";
 
 export default function AboutScreen() {

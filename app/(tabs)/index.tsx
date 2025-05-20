@@ -1,14 +1,14 @@
 import { MovieCard } from "@/components/card/movie-card";
 import { Container } from "@/components/container";
 import { TextInputComponent } from "@/components/text-input";
-import { Wrapper } from "@/components/ui-wrapper";
+import { Wrapper } from "@/components/ui-wrapper/main";
 import { movieList } from "@/constants/data";
 import { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function HomeScreen() {
-  const [movies, setMovies] = useState(movieList);
+  const [movies] = useState(movieList);
   const handler = useForm({ mode: "onChange" });
 
   const searchTitle = handler.watch("movie") ?? "";

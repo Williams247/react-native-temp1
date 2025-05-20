@@ -7,6 +7,7 @@ interface Props {
   handler: UseFormReturn<any>;
   placeholder?: string;
   style?: Record<string, string | number>;
+  secureTextEntry?: boolean
 }
 
 export function TextInputComponent(props: Props) {
@@ -21,6 +22,7 @@ export function TextInputComponent(props: Props) {
         style={{ ...styles.input, ...props.style }}
         onChangeText={(text) => setValue(props.title, text)}
         placeholder={props.placeholder ?? ""}
+        secureTextEntry={props.secureTextEntry}
       />
       {errors[props?.title] && (
         <Text>{errors[props.title]?.message as any}</Text>
@@ -31,7 +33,7 @@ export function TextInputComponent(props: Props) {
 
 const styles = StyleSheet.create({
   input: {
-    padding: 10,
+    padding: 13,
     borderWidth: 1,
     borderColor: "#ccc",
     borderRadius: 10,

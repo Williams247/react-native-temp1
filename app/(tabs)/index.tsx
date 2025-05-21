@@ -83,6 +83,7 @@ export default function HomeScreen() {
       </Wrapper>
       <Modal
         visible={open}
+        animationType="slide"
         onRequestClose={() => {
           setOpen(false);
         }}
@@ -140,6 +141,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+    paddingTop: 30
   },
   text_input: {
     marginTop: 18,
@@ -154,14 +156,16 @@ const styles = StyleSheet.create({
   },
   flat_list: {
     marginTop: 30,
-    marginBottom: 70,
+    marginBottom: 120,
   },
   modal: {
     padding: 20,
   },
   close_modal: {
-    fontSize: 20,
+    fontSize: 35,
     fontWeight: "bold",
+    marginTop: 25,
+    marginBottom: 30
   },
   modal_header: {
     textAlign: "center",

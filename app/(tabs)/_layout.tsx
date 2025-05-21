@@ -1,4 +1,5 @@
-import { IconSymbol } from "@/components/icon/icon-symbol";
+import { AboutIcon } from "@/components/icons/about";
+import { HomeIcon } from "@/components/icons/home";
 import { Tabs } from "expo-router";
 import React from "react";
 
@@ -14,8 +15,8 @@ export default function Navigation() {
       <Tabs.Screen
         name="index"
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <IconSymbol name="house.fill" color={color} size={size} />
+          tabBarIcon: ({ color }) => (
+            <HomeIcon color={color} size={18} strokeWidth={2} />
           ),
           title: "Home",
         }}
@@ -24,6 +25,9 @@ export default function Navigation() {
         name="about"
         options={{
           title: "About us",
+          tabBarIcon: ({ color }) => (
+            <AboutIcon color={color} size={18} strokeWidth={2} />
+          ),
         }}
       />
     </Tabs>

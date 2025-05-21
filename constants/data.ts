@@ -1,7 +1,7 @@
 export const movieList = [
   {
     id: "1",
-    title: "Spider Man",
+    title: "Spider Man....",
     image:
       "https://cdn.mos.cms.futurecdn.net/3JCaEkiSwWKAwgLMjpChF3-1200-80.jpg.webp",
     description:

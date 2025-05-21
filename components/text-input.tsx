@@ -10,6 +10,8 @@ interface Props {
   style?: Record<string, string | number> | {} | undefined;
   textInputStyle?: Record<string, string | number> | {} | undefined;
   secureTextEntry?: boolean;
+  multiline?: boolean;
+  numberOfLines?: number;
 }
 
 export function TextInputComponent(props: Props) {
@@ -25,7 +27,9 @@ export function TextInputComponent(props: Props) {
         onChangeText={(text) => setValue(props.title, text)}
         placeholder={props.placeholder ?? ""}
         autoCapitalize={props.autoCapitalize}
+        multiline={props.multiline}
         secureTextEntry={props.secureTextEntry}
+        numberOfLines={props.numberOfLines}
       />
       {errors[props.title]?.message && (
         <Text style={styles.input_error}>

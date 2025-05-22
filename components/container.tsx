@@ -8,7 +8,7 @@ interface Props {
 
 export function Container({ children, style }: Props) {
   return (
-    <View style={style ?? { paddingLeft: 16, paddingRight: 16 }}>
+    <View style={style ?? { paddingHorizontal: 18 }}>
       {children}
     </View>
   );

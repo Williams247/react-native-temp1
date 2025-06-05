@@ -1,27 +1,31 @@
+import { AllowedDevices } from "@/hooks/media-queries/type";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { Card } from "./index";
 
 interface Props {
-  id: string;
-  title: string;
-  image: string;
-  description: string;
+  data: {
+    id: string;
+    title: string;
+    image: string;
+    description: string;
+  };
+  size: AllowedDevices;
 }
 
-export function MovieCard({ id, title, image, description }: Props) {
+export function MovieCard(props: Props) {
   return (
-    <Pressable style={styles.card_container}>
-      <Card
-        style={{
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <Image source={{ uri: image }} style={styles.image} />
+    <Pressable
+      style={{
+        marginBottom: 30,
+        width: props.size === "tab" ? "48%" : "100%",
+        marginHorizontal: props.size === "tab" ? 10 : 0,
+      }}
+    >
+      <Card style={styles.card}>
+        <Image source={{ uri: props.data.image }} style={styles.image} />
         <View style={{ padding: 10 }}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.description}>{description}</Text>
+          <Text style={styles.title}>{props.data.title}</Text>
+          <Text style={styles.description}>{props.data.description}</Text>
         </View>
       </Card>
     </Pressable>
@@ -29,8 +33,9 @@ export function MovieCard({ id, title, image, description }: Props) {
 }
 
 const styles = StyleSheet.create({
-  card_container: {
-    marginBottom: 30,
+  card: {
+    flex: 1,
+    flexDirection: "column",
   },
   image: {
     width: "100%",

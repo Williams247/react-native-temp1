@@ -4,6 +4,7 @@ import { Container } from "@/components/container";
 import { TextInputComponent } from "@/components/text-input";
 import { Wrapper } from "@/components/ui-wrapper/main";
 import { movieList } from "@/constants/data";
+import { useMediaQuery } from "@/hooks/media-queries";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useCallback, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -28,6 +29,8 @@ type MovieTypes = z.infer<typeof schema>;
 export default function HomeScreen() {
   const [movies, setMovies] = useState(movieList);
   const [open, setOpen] = useState(false);
+
+  const { deviceType } = useMediaQuery();
 
   const handler = useForm({ mode: "onChange" });
 
@@ -73,8 +76,13 @@ export default function HomeScreen() {
           <FlatList
             style={styles.flat_list}
             data={filteredMovies.reverse()}
-            renderItem={({ item }) => <MovieCard {...item} />}
+            renderItem={({ item }) => (
+              <MovieCard data={item} size={deviceType} />
+            )}
             keyExtractor={(item) => item.id}
+            numColumns={
+              deviceType === "mobile" ? 1 : deviceType === "tab" ? 2 : 0
+            }
             ListEmptyComponent={
               <Text style={{ textAlign: "center" }}>No Movies!!!</Text>
             }
@@ -141,7 +149,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingTop: 30
+    paddingTop: 30,
   },
   text_input: {
     marginTop: 18,
@@ -165,7 +173,7 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: "bold",
     marginTop: 25,
-    marginBottom: 30
+    marginBottom: 30,
   },
   modal_header: {
     textAlign: "center",

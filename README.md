@@ -1,4 +1,4 @@
-# Welcome to your Expo app 👋
+# This is a simple react native expo boiler plate
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
@@ -48,3 +48,14 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+# Upgrade the Expo SDK
+## Install the new version of the Expo package:
+- npx expo install expo@latest
+
+## Install a specific SDK version (for example, SDK 5)
+- npx expo install expo@^53.0.0
+
+# Upgrade dependencies
+## Upgrade all dependencies to match the installed SDK version.
+- npx expo install --fix

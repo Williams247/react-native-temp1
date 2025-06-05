@@ -1,4 +1,5 @@
 import { Button } from "@/components/button";
+import { PasswordInputComponent } from "@/components/password-input";
 import { TextInputComponent } from "@/components/text-input";
 import { AuthWrapper } from "@/components/ui-wrapper/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,8 +11,8 @@ import { StyleSheet, Text, View } from "react-native";
 import { z } from "zod";
 
 const schema = z.object({
-  email: z.string().email({ message: "Provide a valid email" }),
-  password: z.string(),
+  email: z.string().email({ message: "Provide a valid email" }).min(1),
+  password: z.string().min(1),
 });
 
 export default function Login() {
@@ -35,17 +36,16 @@ export default function Login() {
         placeholder="sample@gmail.com"
         label="Email"
         autoCapitalize="none"
-        handler={handler}
         style={styles.text_email_input}
+        handler={handler}
       />
 
-      <TextInputComponent
+      <PasswordInputComponent
         title="password"
         placeholder="**********"
         label="Password"
-        handler={handler}
         style={styles.text_password_input}
-        secureTextEntry={checked}
+        handler={handler}
       />
 
       <View style={styles.show_hide_password}>
@@ -55,7 +55,7 @@ export default function Login() {
           color={!checked ? "red" : undefined}
           onValueChange={() => setChecked(!checked)}
         />
-        <Text>{checked ? "Show Password" : "Hide Password"}</Text>
+        <Text>Remember me</Text>
       </View>
 
       <Button onPress={handler.handleSubmit(login)}>
